@@ -1,0 +1,17 @@
+db-data:
+  build: db-data
+
+
+app:
+  build: app
+  volumes_from:
+    - db-data
+
+web:
+  build: web
+  links:
+    - app
+  volumes_from:
+    - app
+  ports:
+    - "8000:80"
