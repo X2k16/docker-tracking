@@ -3,6 +3,13 @@
 from tracking.settings import *
 
 STATIC_ROOT = "/app/static"
+STATIC_URL = "/tracking/static/"
+
+def show_toolbar(request):
+    return True
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
+}
 
 DATABASES = {
     'default': {
