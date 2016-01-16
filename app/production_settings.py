@@ -1,5 +1,5 @@
 # encoding=utf-8
-
+import os
 from tracking.settings import *
 
 STATIC_ROOT = "/app/static"
@@ -13,7 +13,10 @@ DEBUG_TOOLBAR_CONFIG = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/var/lib/sqlite3/db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': "tracking_db_1",
+        'NAME': os.environ.get("POSTGRES_DB"),
+        'USER': os.environ.get("POSTGRES_USER"),
+        'PASSWORD': os.environ.get("POSTGRES_PASSWORD")
     }
 }

@@ -1,11 +1,19 @@
 db-data:
   build: db-data
 
+db:
+  image: postgres
+  volumes_from:
+    - db-data
+  env_file: common.env
+  environment:
+    PGDATA: /var/lib/pgdata
 
 app:
   build: app
   volumes_from:
     - db-data
+  env_file: common.env
 
 web:
   build: web
